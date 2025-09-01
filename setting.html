@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Budgetly</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-wallet me-2"></i>Budgetly
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="record.html">Record</a>
+                    </li>
+                    <li class="nav-item">
+                       
+                        <a class="nav-link active" href="setting.html">Settings</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <button class="btn btn-outline-primary me-2">Login</button>
+                    <button class="btn btn-primary">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Settings Page Content -->
+    <div id="settings" class="page active">
+        <div class="container">
+            <h2 class="fw-bold mb-4">Settings</h2>
+            
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="account-profile">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80" alt="Profile" class="profile-image">
+                            <h4>Alex Johnson</h4>
+                            <p class="text-muted">alex.johnson@example.com</p>
+                            <button class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-edit me-1"></i> Edit Profile
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Account Stats</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="stat-card">
+                                <div class="stat-value">142</div>
+                                <div class="stat-label">Transactions This Month</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value">$3,248</div>
+                                <div class="stat-label">Total Spent This Month</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value">87%</div>
+                                <div class="stat-label">Budget Utilization</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Data Management</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-download me-2"></i> Export Data
+                                </button>
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-upload me-2"></i> Import Data
+                                </button>
+                                <button class="btn btn-outline-danger">
+                                    <i class="fas fa-trash-alt me-2"></i> Delete Account
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Appearance Settings</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="theme-switch-wrapper">
+                                <div>
+                                    <h6>Dark Mode</h6>
+                                    <p class="text-muted mb-0">Switch between light and dark theme</p>
+                                </div>
+                                <label class="theme-switch">
+                                    <input type="checkbox" id="theme-switch">
+                                    <span class="slider">
+                                        <span class="slider-icons">
+                                            <i class="fas fa-moon"></i>
+                                            <i class="fas fa-sun"></i>
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6>Color Scheme</h6>
+                                <p class="text-muted mb-2">Choose your preferred color scheme</p>
+                                <div class="color-scheme">
+                                    <div class="color-option active" data-color="default"></div>
+                                    <div class="color-option" data-color="blue"></div>
+                                    <div class="color-option" data-color="green"></div>
+                                    <div class="color-option" data-color="purple"></div>
+                                    <div class="color-option" data-color="orange"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <h6>Font Size</h6>
+                                <p class="text-muted mb-2">Adjust the font size for better readability</p>
+                                <input type="range" class="form-range" min="12" max="18" step="1" value="16" id="font-size">
+                                <div class="d-flex justify-content-between">
+                                    <small>Small</small>
+                                    <small>Medium</small>
+                                    <small>Large</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Notification Settings</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" type="checkbox" id="notif-email" checked>
+                                <label class="form-check-label" for="notif-email">Email Notifications</label>
+                            </div>
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" type="checkbox" id="notif-budget" checked>
+                                <label class="form-check-label" for="notif-budget">Budget Alerts</label>
+                            </div>
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" type="checkbox" id="notif-weekly">
+                                <label class="form-check-label" for="notif-weekly">Weekly Reports</label>
+                            </div>
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" type="checkbox" id="notif-monthly" checked>
+                                <label class="form-check-label" for="notif-monthly">Monthly Summary</label>
+                            </div>
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" type="checkbox" id="notif-sound" checked>
+                                <label class="form-check-label" for="notif-sound">Sound Alerts</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Privacy & Security</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label">Two-Factor Authentication</label>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="text-muted mb-0">Add an extra layer of security to your account</p>
+                                    <button class="btn btn-outline-primary btn-sm">Enable</button>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Auto-Lock</label>
+                                <select class="form-select">
+                                    <option value="0">Immediately</option>
+                                    <option value="1" selected>After 1 minute</option>
+                                    <option value="5">After 5 minutes</option>
+                                    <option value="10">After 10 minutes</option>
+                                    <option value="30">After 30 minutes</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Data Sharing</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="share-data">
+                                    <label class="form-check-label" for="share-data">
+                                        Allow anonymous usage data collection to help improve Budgetly
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Account Settings</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-control" value="Alex">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" value="Johnson">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-control" value="alex.johnson@example.com">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Currency</label>
+                                <select class="form-select">
+                                    <option>USD ($)</option>
+                                     <option>PKR (Rupees)</option>
+                                    <option>EUR (€)</option>
+                                    <option>GBP (£)</option>
+                                    <option>JPY (¥)</option>
+                                    <option>CAD (C$)</option>
+                                    <option>AUD (A$)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Date Format</label>
+                                <select class="form-select">
+                                    <option>MM/DD/YYYY</option>
+                                    <option>DD/MM/YYYY</option>
+                                    <option>YYYY-MM-DD</option>
+                                </select>
+                            </div>
+                            
+                            <div class="d-grid">
+                                <button class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="fw-bold mb-3"><i class="fas fa-wallet me-2"></i> Budgetly</h5>
+                    <p class="text-muted">Take control of your finances with our modern budget tracking tools and insightful analytics.</p>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h6 class="fw-bold">Company</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">About</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Blog</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h6 class="fw-bold">Support</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">Help Center</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Contact</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-12">
+                    <h6 class="fw-bold">Connect</h6>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-muted"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="text-muted mb-0">&copy; 2025 Budgetly. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="text-muted mb-0">Made with <i class="fas fa-heart text-danger"></i> for budget enthusiasts</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
