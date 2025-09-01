@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Transaction - Budgetly</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-wallet me-2"></i>Budgetly
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="record.html">Record</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="setting.html">Settings</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <button class="btn btn-outline-primary me-2">Login</button>
+                    <button class="btn btn-primary">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Record Page Content -->
+    <div id="record" class="page active">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold">Record Transaction</h2>
+                <button class="btn btn-primary"><i class="fas fa-plus me-2"></i> Add Expense</button>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header bg-white">
+                            <h4 class="mb-0">Record New Transaction</h4>
+                        </div>
+                        <div class="card-body">
+                            <!-- Transaction Type Selector -->
+                            <div class="transaction-type">
+                                <div class="type-btn active" data-type="expense">
+                                    <i class="fas fa-money-bill-wave text-danger"></i>
+                                    <span>Expense</span>
+                                </div>
+                                <div class="type-btn" data-type="income">
+                                    <i class="fas fa-money-check text-success"></i>
+                                    <span>Income</span>
+                                </div>
+                                <div class="type-btn" data-type="transfer">
+                                    <i class="fas fa-exchange-alt text-info"></i>
+                                    <span>Transfer</span>
+                                </div>
+                            </div>
+                            
+                            <form id="transactionForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Amount</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" placeholder="0.00" step="0.01" min="0" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Date</label>
+                                        <input type="date" class="form-control" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Category</label>
+                                    <select class="form-select" required>
+                                        <option value="">Select a category</option>
+                                        <optgroup label="Expenses" id="expenseCategories">
+                                            <option value="housing">Housing</option>
+                                            <option value="food">Food & Dining</option>
+                                            <option value="transport">Transportation</option>
+                                            <option value="utilities">Utilities</option>
+                                            <option value="entertainment">Entertainment</option>
+                                            <option value="shopping">Shopping</option>
+                                            <option value="health">Health</option>
+                                            <option value="other">Other</option>
+                                        </optgroup>
+                                        <optgroup label="Income" id="incomeCategories" style="display:none">
+                                            <option value="salary">Salary</option>
+                                            <option value="freelance">Freelance</option>
+                                            <option value="investment">Investment</option>
+                                            <option value="gift">Gift</option>
+                                            <option value="other">Other</option>
+                                        </optgroup>
+                                        <optgroup label="Transfer" id="transferCategories" style="display:none">
+                                            <option value="savings">Savings Account</option>
+                                            <option value="investment">Investment Account</option>
+                                            <option value="cash">Cash</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Description</label>
+                                    <input type="text" class="form-control" placeholder="Short description">
+                                </div>
+                                
+                                <div class="mb-3 note-container">
+                                    <label class="form-label">Note <small class="text-muted">(Optional)</small></label>
+                                    <textarea class="form-control" rows="3" placeholder="Add additional details about this transaction" maxlength="200"></textarea>
+                                    <div class="char-count">0/200</div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Payment Method</label>
+                                    <select class="form-select">
+                                        <option value="cash">Cash</option>
+                                        <option value="debit">Debit Card</option>
+                                        <option value="credit">Credit Card</option>
+                                        <option value="bank">Bank Transfer</option>
+                                        <option value="digital">Digital Wallet</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" id="repeatTransaction">
+                                    <label class="form-check-label" for="repeatTransaction">
+                                        Repeat this transaction monthly
+                                    </label>
+                                </div>
+                                
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-plus-circle me-2"></i> Add Transaction
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Recent Transactions</h5>
+                            <a href="#" class="btn btn-sm btn-outline-primary">View All</a>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="recent-transactions">
+                                <div class="expense-item">
+                                    <div class="d-flex align-items-center">
+                                        <div class="category-icon">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0">Grocery Shopping</h6>
+                                            <small class="text-muted">Today, 10:30 AM</small>
+                                        </div>
+                                    </div>
+                                    <span class="fw-bold text-danger">-$86.45</span>
+                                </div>
+                                <div class="expense-item">
+                                    <div class="d-flex align-items-center">
+                                        <div class="category-icon">
+                                            <i class="fas fa-money-check"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0">Salary</h6>
+                                            <small class="text-muted">Yesterday</small>
+                                        </div>
+                                    </div>
+                                    <span class="fw-bold text-success">+$2,450.00</span>
+                                </div>
+                                <div class="expense-item">
+                                    <div class="d-flex align-items-center">
+                                        <div class="category-icon">
+                                            <i class="fas fa-gas-pump"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0">Fuel</h6>
+                                            <small class="text">May 14, 2023</small>
+                                        </div>
+                                    </div>
+                                    <span class="fw-bold text-danger">-$45.00</span>
+                                </div>
+                                <div class="expense-item">
+                                    <div class="d-flex align-items-center">
+                                        <div class="category-icon">
+                                            <i class="fas fa-utensils"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0">Dinner Out</h6>
+                                            <small class="text-muted">May 13, 2023</small>
+                                        </div>
+                                    </div>
+                                    <span class="fw-bold text-danger">-$67.80</span>
+                                </div>
+                                <div class="expense-item">
+                                    <div class="d-flex align-items-center">
+                                        <div class="category-icon">
+                                            <i class="fas fa-film"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0">Entertainment</h6>
+                                            <small class="text-muted">May 12, 2023</small>
+                                        </div>
+                                    </div>
+                                    <span class="fw-bold text-danger">-$29.99</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Quick Stats</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span>Monthly Expenses</span>
+                                <span class="fw-bold">$1,845.24</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span>Monthly Income</span>
+                                <span class="fw-bold">$2,450.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>Remaining Budget</span>
+                                <span class="fw-bold">$604.76</span>
+                            </div>
+                            <div class="progress mt-3" style="height: 8px;">
+                                <div class="progress-bar bg-danger" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="fw-bold mb-4"><i class="fas fa-wallet me-2"></i> Budgetly</h5>
+                    <p class="text-muted">Take control of your finances with our modern budget tracking tools and insightful analytics.</p>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h6 class="fw-bold">Company</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">About</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Blog</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h6 class="fw-bold">Support</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">Help Center</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Contact</a>></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-12">
+                    <h6 class="fw-bold">Connect</h6>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-muted"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-linkedin-in"></i></a>
+                    </div>  
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="text-muted mb-0">&copy; 2025 Budgetly. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="text-muted mb-0">Made with <i class="fas fa-heart text-danger"></i> for budget enthusiasts</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Record page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Transaction type selection
+            const typeButtons = document.querySelectorAll('.type-btn');
+            const expenseCategories = document.getElementById('expenseCategories');
+            const incomeCategories = document.getElementById('incomeCategories');
+            const transferCategories = document.getElementById('transferCategories');
+            const categorySelect = document.querySelector('select');
+            
+            typeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    typeButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show appropriate categories
+                    const type = this.getAttribute('data-type');
+                    
+                    expenseCategories.style.display = 'none';
+                    incomeCategories.style.display = 'none';
+                    transferCategories.style.display = 'none';
+                    
+                    if (type === 'expense') {
+                        expenseCategories.style.display = 'block';
+                    } else if (type === 'income') {
+                        incomeCategories.style.display = 'block';
+                    } else if (type === 'transfer') {
+                        transferCategories.style.display = 'block';
+                    }
+                    
+                    // Reset selection
+                    categorySelect.value = '';
+                });
+            });
+            
+            // Character count for note textarea
+            const noteTextarea = document.querySelector('textarea');
+            const charCount = document.querySelector('.char-count');
+            
+            if (noteTextarea && charCount) {
+                noteTextarea.addEventListener('input', function() {
+                    const length = this.value.length;
+                    charCount.textContent = `${length}/200`;
+                    
+                    if (length > 180) {
+                        charCount.style.color = '#dc3545';
+                    } else {
+                        charCount.style.color = '#4BB4A3';
+                    }
+                });
+            }
+            
+            // Form submission
+            const transactionForm = document.getElementById('transactionForm');
+            
+            if (transactionForm) {
+                transactionForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const amount = this.querySelector('input[type="number"]').value;
+                    const date = this.querySelector('input[type="date"]').value;
+                    const category = this.querySelector('select').value;
+                    const description = this.querySelector('input[type="text"]').value;
+                    const note = this.querySelector('textarea').value;
+                    const paymentMethod = this.querySelectorAll('select')[1].value;
+                    const isRepeating = this.querySelector('input[type="checkbox"]').checked;
+                    
+                    // In a real application, you would send this data to a server
+                    // For this example, we'll just show an alert
+                    
+                    const type = document.querySelector('.type-btn.active').getAttribute('data-type');
+                    alert(`Transaction added successfully!\nType: ${type}\nAmount: $${amount}\nCategory: ${category}`);
+                    
+                    // Reset form
+                    this.reset();
+                    if (charCount) {
+                        charCount.textContent = '0/200';
+                    }
+                });
+            }
+            
+            // Set today's date as default for date field
+            const dateField = document.querySelector('input[type="date"]');
+            if (dateField && !dateField.value) {
+                const today = new Date();
+                const yyyy = today.getFullYear();
+                let mm = today.getMonth() + 1;
+                let dd = today.getDate();
+                
+                if (dd < 10) dd = '0' + dd;
+                if (mm < 10) mm = '0' + mm;
+                
+                const formattedToday = `${yyyy}-${mm}-${dd}`;
+                dateField.value = formattedToday;
+            }
+        });
+    </script>
+</body>
+</html>
