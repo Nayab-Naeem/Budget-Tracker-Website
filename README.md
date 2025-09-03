@@ -17,6 +17,10 @@ Recent transactions section
 
 Organized pages: Home | Dashboard | Record | Settings
 
+## 🔗 Live Demo
+[View Website](https://nayab-naeem.github.io/Budget-Tracker-Website/)
+
+
 ## 📸 Preview
 
 ![Home Page](assets/Home1.png)
